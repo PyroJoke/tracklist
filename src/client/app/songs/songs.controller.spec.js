@@ -34,7 +34,30 @@ describe('SongsController', function() {
                 expect(controller.songs).to.have.length.above(0);
             });
 
-            it('should have mechanism to add a song');
+            it('should have mechanism to add a song', function() {
+                controller.add();
+            });
+
+            it('should add new song with specified title and tempo', function() {
+                var songsCount = controller.songs.length;
+                controller.newSong = {title: 'New Song', tempo: 30};
+                controller.add();
+                expect(controller.songs.length).to.equal(songsCount + 1);
+            });
+
+            it('should not allow to add song without title', function() {
+                var songsCount = controller.songs.length;
+                controller.newSong = {};
+                controller.add();
+                expect(controller.songs.length).to.equal(songsCount);
+            });
+
+            it('should not allow to add song with negative tempo', function() {
+                var songsCount = controller.songs.length;
+                controller.newSong = {title: 'New Song', tempo: -1};
+                controller.add();
+                expect(controller.songs.length).to.equal(songsCount);
+            });
 
             it('should have mechanism to change song data');
         });

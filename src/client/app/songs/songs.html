@@ -2,6 +2,19 @@
     <section class="matter">
         <div class="container">
             <div class="row">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="titleInput">Title</label>
+                        <input type="text" class="form-control" id="titleInput"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="tempoInput">Tempo</label>
+                        <input type="number" class="form-control" id="tempoInput"></input>
+                    </div>
+                    <button type="submit" class="btn btn-default">Save</button>
+                </form>
+            </div>
+            <div class="row">
                 <div class="widget wviolet">
                     <div ht-widget-header title="{{vm.title}}"></div>
                     <div class="widget-content text-center text-info">

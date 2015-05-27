@@ -11,6 +11,9 @@
         var vm = this;
         vm.title = 'Songs';
         vm.songs = [];
+        vm.newSong = {};
+
+        vm.add = add;
 
         activate();
 
@@ -27,6 +30,22 @@
                 return vm.data;
             });
         }
+
+        function add() {
+            if (!isSongValid(vm.newSong)) { return; }
+
+            vm.songs.push(vm.newSong);
+        }
+    }
+
+    function isSongValid(song) {
+        if (!song) { return false; }
+
+        if (!song.title) { return false; }
+
+        if (song.tempo && song.tempo < 0) { return false; }
+
+        return true;
     }
 
 })();
